@@ -1,0 +1,27 @@
+<%= form_for(@request_attachment) do |f| %>
+  <% if @request_attachment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request_attachment.errors.count, "error") %> prohibited this request_attachment from being saved:</h2>
+
+      <ul>
+      <% @request_attachment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :request_id %><br />
+    <%= f.number_field :request_id, :readonly => @request_attachment.request_id? %>
+  </div>
+
+  <div class="field">
+    <%= f.label :attachment %><br />
+    <%= f.file_field :attachment %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

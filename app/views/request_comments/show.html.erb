@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Request:</b>
+  <%= @request_comment.request_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @request_comment.user_id %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @request_comment.text %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_comment_path(@request_comment) %> |
+<%= link_to 'Back', request_comments_path %>

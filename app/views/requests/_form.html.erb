@@ -1,0 +1,87 @@
+<%= form_for(@request) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :system_id %><br />
+    <%= f.collection_select :system_id, System.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :target_date %><br />
+    <%= f.datetime_select :target_date %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.text_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :behalf_of_user_id %><br />
+    <%= f.text_field :behalf_of_user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br />
+    <%= f.text_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :context %><br />
+    <%= f.text_field :context %>
+  </div>
+
+  <!--<% if @request.persisted? %>
+    <%= f.label :request_comments %>
+    <%= f.fields_for :request_comments, @request.request_comments.last do |c| %>
+        <div class="field">
+          <%= c.label :user_id %><br />
+          <%= c.text_field :user_id %>
+        </div>
+        <div class="field">
+          <%= c.label :text %><br />
+          <%= c.text_area :text %>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <% @request.request_comments[0..-1].each do |comment| %>
+        <div>
+          <%= comment.user_id %><br>
+          <%= comment.created_at %><br>
+          <%= comment.text %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>-->
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

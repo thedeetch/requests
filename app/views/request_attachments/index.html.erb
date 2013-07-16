@@ -1,0 +1,23 @@
+<h1>Listing request_attachments</h1>
+
+<table>
+  <tr>
+    <th>Request</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @request_attachments.each do |request_attachment| %>
+  <tr>
+    <td><%= request_attachment.request_id %></td>
+    <td><%= link_to 'Show', request_attachment %></td>
+    <td><%= link_to 'Edit', edit_request_attachment_path(request_attachment) %></td>
+    <td><%= link_to 'Destroy', request_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Request attachment', new_request_attachment_path %>

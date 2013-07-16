@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  category: MyString
+  description: MyString
+  target_date: 2013-07-12 20:38:20
+  size: MyString
+  status: MyString
+  user: MyString
+  behalf_of_user: MyString
+  priority: MyString
+  type: 
+
+two:
+  title: MyString
+  category: MyString
+  description: MyString
+  target_date: 2013-07-12 20:38:20
+  size: MyString
+  status: MyString
+  user: MyString
+  behalf_of_user: MyString
+  priority: MyString
+  type: 

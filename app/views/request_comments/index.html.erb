@@ -1,0 +1,27 @@
+<h1>Listing request_comments</h1>
+
+<table>
+  <tr>
+    <th>Request</th>
+    <th>User</th>
+    <th>Text</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @request_comments.each do |request_comment| %>
+  <tr>
+    <td><%= request_comment.request_id %></td>
+    <td><%= request_comment.user_id %></td>
+    <td><%= request_comment.text %></td>
+    <td><%= link_to 'Show', request_comment %></td>
+    <td><%= link_to 'Edit', edit_request_comment_path(request_comment) %></td>
+    <td><%= link_to 'Destroy', request_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Request comment', new_request_comment_path %>

@@ -1,0 +1,21 @@
+<h1>Listing request_teams</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @request_teams.each do |request_team| %>
+  <tr>
+    <td><%= link_to 'Show', request_team %></td>
+    <td><%= link_to 'Edit', edit_request_team_path(request_team) %></td>
+    <td><%= link_to 'Destroy', request_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Request team', new_request_team_path %>

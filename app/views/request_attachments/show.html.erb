@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Request:</b>
+  <%= @request_attachment.request_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_attachment_path(@request_attachment) %> |
+<%= link_to 'Back', request_attachments_path %>
