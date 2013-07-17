@@ -46,7 +46,7 @@ class RequestTeamsController < ApplicationController
 
     respond_to do |format|
       if @request_team.save
-        format.html { redirect_to @request_team, notice: 'Request team was successfully created.' }
+        format.html { redirect_to @request_team.request, notice: 'Request team was successfully created.' }
         format.json { render json: @request_team, status: :created, location: @request_team }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class RequestTeamsController < ApplicationController
 
     respond_to do |format|
       if @request_team.update_attributes(params[:request_team])
-        format.html { redirect_to @request_team, notice: 'Request team was successfully updated.' }
+        format.html { redirect_to @request_team.request, notice: 'Request team was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -74,11 +74,12 @@ class RequestTeamsController < ApplicationController
   # DELETE /request_teams/1
   # DELETE /request_teams/1.json
   def destroy
+    @request = @request_team.request
     @request_team = RequestTeam.find(params[:id])
     @request_team.destroy
 
     respond_to do |format|
-      format.html { redirect_to request_teams_url }
+      format.html { redirect_to @request }
       format.json { head :no_content }
     end
   end

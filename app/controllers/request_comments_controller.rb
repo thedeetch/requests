@@ -46,7 +46,7 @@ class RequestCommentsController < ApplicationController
 
     respond_to do |format|
       if @request_comment.save
-        format.html { redirect_to @request_comment, notice: 'Request comment was successfully created.' }
+        format.html { redirect_to @request_comment.request, notice: 'Request comment was successfully created.' }
         format.json { render json: @request_comment, status: :created, location: @request_comment }
       else
         format.html { render action: "new" }

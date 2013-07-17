@@ -14,6 +14,8 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
+    @request_team = RequestTeam.new
+    @request_team.request_id = @request.id
 
     respond_to do |format|
       format.html # show.html.erb
