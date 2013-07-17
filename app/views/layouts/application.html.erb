@@ -25,13 +25,18 @@
 					<input type="text" class="search-query" placeholder="Search">
 				</form>
 			</div>
-
 		</div>
-		<%= yield %>
+		<div class="content">
+			<%= yield %>
+		</div>
 	</div>
 	<%= javascript_include_tag "application" %>
 	<script>
 		$('table').dataTable()
+
+		$(".btn-primary").click(function () {
+      		$(this).closest(".modal").find("form").submit();
+    	});
 	</script>
 </body>
 </html>
