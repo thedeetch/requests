@@ -1,5 +1,5 @@
 class Request < ActiveRecord::Base
-  attr_accessible :behalf_of_user_id, :category, :description, :priority, :size, :status, :target_date, :title, :context, :user_id, :system_id, :comments_attributes
+  attr_accessible :behalf_of_user_id, :category, :description, :priority, :size, :status, :target_date, :title, :context, :user_id, :system_id, :comments_attributes, :user_email
 
   has_many :request_comments, :dependent => :destroy
   has_many :request_attachments, :dependent => :destroy

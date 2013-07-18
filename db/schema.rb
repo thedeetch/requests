@@ -11,19 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716034553) do
+ActiveRecord::Schema.define(:version => 20130718021424) do
 
   create_table "request_attachments", :force => true do |t|
-    t.integer  "request_id", :null => false
-    t.string   "attachment", :null => false
+    t.integer  "request_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "attachment"
   end
 
   create_table "request_comments", :force => true do |t|
-    t.integer  "request_id", :null => false
-    t.string   "user_id",    :null => false
-    t.string   "text",       :null => false
+    t.integer  "request_id"
+    t.string   "user_id"
+    t.string   "text"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -38,12 +38,13 @@ ActiveRecord::Schema.define(:version => 20130716034553) do
   create_table "request_users", :force => true do |t|
     t.integer  "request_id", :null => false
     t.string   "user_id",    :null => false
-    t.string   "role",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "role"
     t.datetime "begin"
     t.datetime "end"
     t.integer  "allocation"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "email"
   end
 
   create_table "requests", :force => true do |t|
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20130716034553) do
     t.string   "context",           :null => false
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "user_email"
   end
 
   create_table "systems", :force => true do |t|

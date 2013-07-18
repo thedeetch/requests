@@ -46,6 +46,10 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
+
+        #send email
+        RequestMailer.new_request(@request).deliver
+
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
@@ -60,8 +64,13 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
 
+
     respond_to do |format|
       if @request.update_attributes(params[:request])
+
+        #send email
+        RequestMailer.update_request(@request).deliver
+
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else
