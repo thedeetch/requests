@@ -21,7 +21,7 @@
     <div class="control-group">
       <%= f.label :team_id, :class => "control-label" %>
       <div class="controls">
-        <%= f.collection_select :team_id, @request.teams - Team.all, :id, :name, :prompt => "Please Select", :required => true %>
+        <%= f.collection_select :team_id, Team.all - @request.teams, :id, :name, :prompt => "Please Select", :required => true %>
       </div>
     </div>
 
