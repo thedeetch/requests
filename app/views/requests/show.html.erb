@@ -68,23 +68,9 @@
   </div>
   <% end %>
 
-  <a href="#Comment" role="button" class="btn" data-toggle="modal" data-remote="/request_comments/new?request_id=<%= @request.id %> .content form">Add</a>
+  <a href="#comment" role="button" class="btn" data-toggle="modal">Add</a>
   
-  <div id="Comment" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Request Comment</h3>
-    </div>
-    
-    <div class="modal-body">
-    </div>
-    
-    <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-      <button class="btn btn-primary">Save changes</button>
-    </div>
-  </div>
+  <%= render "request_comments/form" %>
 </p>
 
 <p>
@@ -105,30 +91,19 @@
           <%= request_team.team.name %>
         </td>
         <td>
-          <a href="#Team" role="button" class="btn" data-toggle="modal" data-remote="/request_teams/<%= request_team.id %>/edit .content form">Edit</a>
+          <a href="#team" role="button" class="btn" data-toggle="modal">Edit</a>
+          <%= form_for(request_team, :method => :delete) do |f| %>
+            <%= f.submit "Delete", :class => "btn btn-primary btn-danger" %>
+          <% end %>
         </td>
       </tr>
       <% end %>
     </tbody>
   </table>
 
-  <a href="#Team" role="button" class="btn" data-toggle="modal">Add</a>
+  <a href="#team" role="button" class="btn" data-toggle="modal">Add</a>
   
-  <div id="Team" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Request Team</h3>
-    </div>
-
-    <div class="modal-body">
-    </div>
-
-    <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-      <button class="btn btn-primary">Save changes</button>
-    </div>
-  </div>
+  <%= render "request_teams/form" %>
 </p>
 
 <p>
@@ -173,29 +148,15 @@
           <%= request_user.end %>
         </td>
         <td>
-          <a href="#User" role="button" class="btn" data-toggle="modal" data-remote="/request_users/<%= request_user.id %>/edit .content form">Edit</a>
+          <a href="#user" role="button" class="btn" data-toggle="modal">Edit</a>
         </td>
         <% end %>
       </tbody>
     </table>
 
-    <a href="#User" role="button" class="btn" data-toggle="modal" data-remote="/request_users/new?request_id=<%= @request.id %> .content form">Add</a>
+    <a href="#user" role="button" class="btn" data-toggle="modal">Add</a>
 
-    <div id="User" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Request User</h3>
-      </div>
-
-      <div class="modal-body">
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        <button class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+    <%= render "request_users/form" %>
   </p>
 
   <p>
@@ -203,27 +164,13 @@
     <% @request.request_attachments.each do |request_attachment| %>
     <div>
       <%= link_to File.basename(request_attachment.attachment_url), request_attachment.attachment_url %>
-      <a href="#Attachment" role="button" class="btn" data-toggle="modal" data-remote="/request_attachments/<%= request_attachment.id %>/edit .content form">Edit</a>
+      <a href="#attachment" role="button" class="btn" data-toggle="modal">Edit</a>
     </div>
     <% end %>
 
-    <a href="#Attachment" role="button" class="btn" data-toggle="modal" data-remote="/request_attachments/new?request_id=<%= @request.id %> .content form">Add Attachment</a>
+    <a href="#attachment" role="button" class="btn" data-toggle="modal">Add Attachment</a>
 
-    <div id="Attachment" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h3 id="myModalLabel">Request Attachment</h3>
-      </div>
-
-      <div class="modal-body">
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-        <button class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+    <%= render "request_attachments/form" %>
   </p>
 
 

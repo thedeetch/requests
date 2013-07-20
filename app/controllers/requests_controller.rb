@@ -14,8 +14,18 @@ class RequestsController < ApplicationController
   # GET /requests/1.json
   def show
     @request = Request.find(params[:id])
+
+    @request_comment = RequestComment.new
+    @request_comment.request_id = @request.id
+
     @request_team = RequestTeam.new
     @request_team.request_id = @request.id
+
+    @request_user = RequestUser.new
+    @request_user.request_id = @request.id
+
+    @request_attachment = RequestAttachment.new
+    @request_attachment.request_id = @request.id
 
     respond_to do |format|
       format.html # show.html.erb

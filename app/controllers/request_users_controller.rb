@@ -46,7 +46,7 @@ class RequestUsersController < ApplicationController
 
     respond_to do |format|
       if @request_user.save
-        format.html { redirect_to @request_user, notice: 'Request user was successfully created.' }
+        format.html { redirect_to @request_user.request, notice: 'Request user was successfully created.' }
         format.json { render json: @request_user, status: :created, location: @request_user }
       else
         format.html { render action: "new" }

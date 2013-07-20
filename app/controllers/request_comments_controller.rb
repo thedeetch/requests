@@ -26,8 +26,6 @@ class RequestCommentsController < ApplicationController
   def new
     @request_comment = RequestComment.new
 
-    @request_comment.request_id = params[:request_id]
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @request_comment }

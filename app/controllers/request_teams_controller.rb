@@ -74,8 +74,8 @@ class RequestTeamsController < ApplicationController
   # DELETE /request_teams/1
   # DELETE /request_teams/1.json
   def destroy
-    @request = @request_team.request
     @request_team = RequestTeam.find(params[:id])
+    @request = @request_team.request
     @request_team.destroy
 
     respond_to do |format|

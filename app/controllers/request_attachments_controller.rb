@@ -46,7 +46,7 @@ class RequestAttachmentsController < ApplicationController
 
     respond_to do |format|
       if @request_attachment.save
-        format.html { redirect_to @request_attachment, notice: 'Request attachment was successfully created.' }
+        format.html { redirect_to @request_attachment.request, notice: 'Request attachment was successfully created.' }
         format.json { render json: @request_attachment, status: :created, location: @request_attachment }
       else
         format.html { render action: "new" }

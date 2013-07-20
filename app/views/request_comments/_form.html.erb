@@ -1,29 +1,37 @@
-<%= form_for(@request_comment) do |f| %>
-  <% if @request_comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@request_comment.errors.count, "error") %> prohibited this request_comment from being saved:</h2>
+<div id="comment" class="modal hide fade content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Request Comment</h3>
+  </div>
 
-      <ul>
-      <% @request_comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <%= form_for(@request_comment, :html => {:class => "form-horizontal"}) do |f| %>
+    <% if @request_comment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@request_comment.errors.count, "error") %> prohibited this request_comment from being saved:</h2>
+
+        <ul>
+        <% @request_comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="modal-body">
+      <div class="control-group">
+        <%= f.label :text, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_area :text, :rows => "10", :class => "input-xlarge", :required => true %>
+        </div>
+      </div>
+
+      <%= f.hidden_field :request_id %>
+      <%= f.hidden_field :user_id %>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      <%= f.submit :class => "btn btn-primary" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :request_id %><br />
-    <%= f.number_field :request_id, :readonly => @request_comment.request_id? %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :text %><br />
-    <%= f.text_area :text %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
