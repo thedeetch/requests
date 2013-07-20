@@ -40,6 +40,9 @@ gem 'less-rails'
 # Twitter Bootstrap
 gem 'twitter-bootstrap-rails'
 
+# Bootstrap datepicker
+gem 'bootstrap-datepicker-rails'
+
 # Fontawesome icons
 gem 'font-awesome-rails'
 

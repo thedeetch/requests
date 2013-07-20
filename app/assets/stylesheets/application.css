@@ -10,7 +10,13 @@
  *
  *= require_self
  *= require bootstrap_and_overrides
+ *= require bootstrap-datepicker
  *= require font-awesome
  *= require dataTables/jquery.dataTables.bootstrap
  *= require_tree .
  */
+
+.footer
+{
+	background-color: grey;
+}

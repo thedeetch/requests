@@ -15,7 +15,7 @@
 				</form>
 				<ul class="nav" role="navigation">
 					<li class="active">
-						<a href="/">Requests</a>
+						<a href="/">Dashboard</a>
 					</li>
 					<li>
 						<a href="#">Reports</a>
@@ -27,21 +27,27 @@
 							<li><a href="#">Risk/Impact Form</a></li>
 						</ul>
 					</li>
+						
 				</ul>
-
+				<%= link_to "New Request", new_request_url, :class => "btn btn-success" %>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<%= yield %>
 	</div>
+
+	<div class="footer">
+		<div class="container">
+		<div class="span4 offset4">
+			Footer
+			</div>
+		</div>
+	</div>
+
 	<%= javascript_include_tag "application" %>
 	<script>
-		$('table').dataTable({"bFilter": false, "sDom": '<"row"<"span3 offset9"l>>t<"row"<"span5"i><"span4 offset2"p>>'})
-
-		$(".btn-primary").click(function () {
-			$(this).closest(".modal").find("form").submit();
-		});
+		$('table').dataTable({"bFilter": false, "sDom": '<"row"<"span3 offset9"l>>t<"row"<"span5"i><"span4 offset2"p>>'});
 	</script>
 </body>
 </html>
