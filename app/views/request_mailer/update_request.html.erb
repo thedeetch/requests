@@ -5,6 +5,7 @@
   </head>
   <body>
     <h1><%= @request.title %></h1>
+    <h1><%= @request.previous_version.title %></h1>
     <p>
       You have successfully updated a request, <%= @request.user_email %>!<br/>
     </p>

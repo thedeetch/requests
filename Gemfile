@@ -9,10 +9,14 @@ gem 'rails', '3.2.8'
 #gem 'pg'
 
 group :development, :test do
+   # Sqlite support for test
    gem 'sqlite3'
 end
 group :production do
+  # Postgres support for Heroku
   gem 'pg'
+
+  # Compress pages and assets
   gem 'heroku_rails_deflate'
 end
 
@@ -32,11 +36,24 @@ end
 gem 'jquery-rails'
 gem 'therubyracer'
 gem 'less-rails'
+
+# Twitter Bootstrap
 gem 'twitter-bootstrap-rails'
+
+# Fontawesome icons
 gem 'font-awesome-rails'
+
+# To use fancy jQuery datatables
 gem 'jquery-datatables-rails'
+
+# To use LDAP queries
 gem 'net-ldap'
+
+# To use file uploads in models
 gem 'carrierwave'
+
+# To use model version history
+gem 'paper_trail'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
