@@ -1,53 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Requests</title>
-	<%= stylesheet_link_tag    "application", :media => "all" %>
-	<%= csrf_meta_tags %>
-</head>
-<body>
-	<div class="navbar navbar-static-top">
-		<div class="navbar-inner">
+	<head>
+		<title>Requests</title>
+		<%= stylesheet_link_tag "application", :media => "all" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="wrapper">
+			<%= render "layouts/navbar" %>
+
 			<div class="container">
-				<a class="brand" href="/"><i class="icon-laptop"></i> IT Requests</a>
-				<form class="navbar-search pull-right">
-					<input type="text" class="search-query" placeholder="Search">
-				</form>
-				<ul class="nav" role="navigation">
-					<li class="active">
-						<a href="/">Dashboard</a>
-					</li>
-					<li>
-						<a href="#">Reports</a>
-					</li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">Links <b class="caret"></b></a>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-							<li><a href="#">Production Change Management</a></li>
-							<li><a href="#">Risk/Impact Form</a></li>
-						</ul>
-					</li>
-						
-				</ul>
-				<%= link_to "New Request", new_request_url, :class => "btn btn-success" %>
+				<%= yield %>
+			</div>
+			<div class="push">
+				<!--//-->
 			</div>
 		</div>
-	</div>
-	<div class="container">
-		<%= yield %>
-	</div>
 
-	<div class="footer">
-		<div class="container">
-		<div class="span4 offset4">
-			Footer
-			</div>
-		</div>
-	</div>
+		<%= render "layouts/footer" %>
 
-	<%= javascript_include_tag "application" %>
-	<script>
-		$('table').dataTable({"bFilter": false, "sDom": '<"row"<"span3 offset9"l>>t<"row"<"span5"i><"span4 offset2"p>>'});
-	</script>
-</body>
+		<%= javascript_include_tag "application" %>
+	</body>
 </html>

@@ -35,7 +35,13 @@
   <div class="control-group">
     <%= f.label :description, :class => "control-label" %>
     <div class="controls">
-      <%= f.text_area :description %>
+      <%= f.text_area :description, :title => 
+      "Who is affected? (Widespread or isolated)
+What are the causes of the problem? (Including troubleshooting steps taken)
+When does the problem occur?
+Where does the problem occur?
+What is the business impact if the request is not completed?
+What would a successful solution look like?" %>
     </div>
   </div>
 

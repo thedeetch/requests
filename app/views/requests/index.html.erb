@@ -1,57 +1,46 @@
-<h3>My Requests</h3>
-<table class="table table-striped table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Target date</th>
-        <th>Status</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Context</th>
-      </tr>
-    </thead>
-    <tbody>
-        <% @requests.each do |request| %>
-          <tr>
-            <td><%= request.id %></td>
-            <td><%= link_to request.title, request %></td>
-            <td><%= request.target_date %></td>
-            <td><%= request.status %></td>
-            <td><%= request.user_id %></td>
-            <td><%= request.priority %></td>
-            <td><%= request.context %></td>
-          </tr>
-        <% end %>
-    </tbody>
-</table>
+<ul class="nav nav-tabs">
+	<li class="active">
+		<a href="#me" data-toggle="tab">Me</a>
+	</li>
+	<li>
+		<a href="#unassigned" data-toggle="tab">Unassigned</a>
+	</li>
+	<li>
+		<a href="#open" data-toggle="tab">Open</a>
+	</li>
+	<li>
+		<a href="#operation" data-toggle="tab">Operations</a>
+	</li>
+	<li>
+		<a href="#project" data-toggle="tab">Projects</a>
+	</li>
+	<li>
+		<a href="#all" data-toggle="tab">All</a>
+	</li>
+</ul>
 
-<br />
+<div class="pill-content">
+	<div id="me" class="active pill-pane">
+		<%= render :partial => "requests/table", :locals => {:requests => @me} %>
+	</div>
 
-<h3>Open Requests</h3>
-<table class="table table-striped table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Target date</th>
-        <th>Status</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Context</th>
-      </tr>
-    </thead>
-    <tbody>
-        <% @requests.each do |request| %>
-          <tr>
-            <td><%= request.id %></td>
-            <td><%= link_to request.title, request %></td>
-            <td><%= request.target_date %></td>
-            <td><%= request.status %></td>
-            <td><%= request.user_id %></td>
-            <td><%= request.priority %></td>
-            <td><%= request.context %></td>
-          </tr>
-        <% end %>
-    </tbody>
-</table>
+	<div id="unassigned" class="pill-pane">
+		<%= render :partial => "requests/table", :locals => {:requests => @unassigned} %>
+	</div>
+
+	<div id="open" class="pill-pane">
+		<%= render :partial => "requests/table", :locals => {:requests => @open} %>
+	</div>
+
+	<div id="operation" class="pill-pane">
+		<%= render :partial => "requests/table", :locals => {:requests => @operation} %>
+	</div>
+
+	<div id="project" class="pill-pane">
+		<%= render :partial => "requests/table", :locals => {:requests => @project} %>
+	</div>
+	
+	<div id="all" class="pill-pane">
+		<%= render :partial => "requests/table", :locals => {:requests => @requests} %>
+	</div>
+</div>

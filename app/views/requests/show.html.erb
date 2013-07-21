@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Id:</b>
-  <%= @request.id %>
-</p>
+<div class="display-group">
+  <div class="display-label">
+  <%= label @request, :Id %>
+  </div>
+  <div class="display-value">
+    <label><%= @request.id %></label>
+  </div>
+</div>
 
 <p>
   <b>Title:</b>
@@ -54,7 +58,7 @@
   <b>Context:</b>
   <%= @request.context %>
 </p>
-
+</form>
 <p>
   <b>Comments:</b>
   <% @request.request_comments.each do |request_comment| %>

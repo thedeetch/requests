@@ -17,3 +17,10 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap
 //= require_tree .
+
+// Initialize datatables
+$('table').dataTable({	
+						"bFilter": false, 
+						"sDom": '<"row"<"pull-right"l>>t<"row"<"span5"i><"pull-right"p>>',
+						"sPaginationType": "bootstrap"
+					});

@@ -3,6 +3,11 @@ class RequestsController < ApplicationController
   # GET /requests.json
   def index
     @requests = Request.all
+    @me = Request.where(user_id: 'd370547')
+    @unassigned = Request.joins(:request_teams).joins(:teams).where("teams.name = 'DMG_DBA'").uniq
+    @open = Request.where(status: 'Open')
+    @project = Request.where(context: 'Project')
+    @operation = Request.where(status: 'Operations')
 
     respond_to do |format|
       format.html # index.html.erb
