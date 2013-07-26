@@ -1,46 +1,58 @@
 <ul class="nav nav-tabs">
-	<li class="active">
-		<a href="#me" data-toggle="tab">Me</a>
-	</li>
-	<li>
-		<a href="#unassigned" data-toggle="tab">Unassigned</a>
-	</li>
-	<li>
-		<a href="#open" data-toggle="tab">Open</a>
-	</li>
-	<li>
-		<a href="#operation" data-toggle="tab">Operations</a>
-	</li>
-	<li>
-		<a href="#project" data-toggle="tab">Projects</a>
-	</li>
-	<li>
-		<a href="#all" data-toggle="tab">All</a>
-	</li>
+	<% if @query %>
+		<li class="active">
+			<a href="#search" data-toggle="tab">Search Results</a>
+		</li>
+	<% else %>
+		<li class="active">
+			<a href="#me" data-toggle="tab">Me</a>
+		</li>
+		<li>
+			<a href="#unassigned" data-toggle="tab">Unassigned</a>
+		</li>
+		<li>
+			<a href="#open" data-toggle="tab">Open</a>
+		</li>
+		<li>
+			<a href="#operation" data-toggle="tab">Operations</a>
+		</li>
+		<li>
+			<a href="#project" data-toggle="tab">Projects</a>
+		</li>
+		<li>
+			<a href="#all" data-toggle="tab">All</a>
+		</li>
+	<% end %>
 </ul>
 
 <div class="pill-content">
-	<div id="me" class="active pill-pane">
-		<%= render :partial => "requests/table", :locals => {:requests => @me} %>
-	</div>
+	<% if @query %>
+		<div id="search" class="active pill-pane">
+			<%= render :partial => "requests/table", :locals => {:requests => @search} %>
+		</div>	
+	<% else %>		
+		<div id="me" class="pill-pane active">
+			<%= render :partial => "requests/table", :locals => {:requests => @me} %>
+		</div>
 
-	<div id="unassigned" class="pill-pane">
-		<%= render :partial => "requests/table", :locals => {:requests => @unassigned} %>
-	</div>
+		<div id="unassigned" class="pill-pane">
+			<%= render :partial => "requests/table", :locals => {:requests => @unassigned} %>
+		</div>
 
-	<div id="open" class="pill-pane">
-		<%= render :partial => "requests/table", :locals => {:requests => @open} %>
-	</div>
+		<div id="open" class="pill-pane">
+			<%= render :partial => "requests/table", :locals => {:requests => @open} %>
+		</div>
 
-	<div id="operation" class="pill-pane">
-		<%= render :partial => "requests/table", :locals => {:requests => @operation} %>
-	</div>
+		<div id="operation" class="pill-pane">
+			<%= render :partial => "requests/table", :locals => {:requests => @operation} %>
+		</div>
 
-	<div id="project" class="pill-pane">
-		<%= render :partial => "requests/table", :locals => {:requests => @project} %>
-	</div>
-	
-	<div id="all" class="pill-pane">
-		<%= render :partial => "requests/table", :locals => {:requests => @requests} %>
-	</div>
+		<div id="project" class="pill-pane">
+			<%= render :partial => "requests/table", :locals => {:requests => @project} %>
+		</div>
+		
+		<div id="all" class="pill-pane">
+			<%= render :partial => "requests/table", :locals => {:requests => @requests} %>
+		</div>
+	<% end %>
 </div>

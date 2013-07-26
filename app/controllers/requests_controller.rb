@@ -2,12 +2,27 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
-    @requests = Request.all
-    @me = Request.where(user_id: 'd370547')
-    @unassigned = Request.joins(:request_teams).joins(:teams).where("teams.name = 'DMG_DBA'").uniq
-    @open = Request.where(status: 'Open')
-    @project = Request.where(context: 'Project')
-    @operation = Request.where(status: 'Operations')
+    @query = params[:q]
+
+    if @query
+      r = Request.arel_table
+      c = RequestComment.arel_table
+
+      @search = Request.joins(:request_comments).
+      where(
+        r[:id].eq(@query).
+        or(r[:title].matches("%#{@query}%")).
+        or(r[:description].matches("%#{@query}%")).
+        or(c[:text].matches("%#{@query}%"))
+      ).uniq
+    else
+      @requests = Request.all
+      @me = Request.where(user_id: 'd370547')
+      @unassigned = Request.joins(:request_teams).joins(:teams).where("teams.name = 'DMG_DBA'").uniq
+      @open = Request.where(status: 'Open')
+      @project = Request.where(context: 'Project')
+      @operation = Request.where(status: 'Operations')
+    end
 
     respond_to do |format|
       format.html # index.html.erb
