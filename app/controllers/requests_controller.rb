@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
   def index
     @query = params[:q]
 
-    if @query.blank?
+    if !@query.blank?
       r = Request.arel_table
       c = RequestComment.arel_table
 

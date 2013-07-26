@@ -1,5 +1,5 @@
 <ul class="nav nav-tabs">
-	<% if @query.blank? %>
+	<% if !@query.blank? %>
 		<li class="active">
 			<a href="#search" data-toggle="tab">Search Results</a>
 		</li>
@@ -26,7 +26,7 @@
 </ul>
 
 <div class="pill-content">
-	<% if @query.blank? %>
+	<% if !@query.blank? %>
 		<div id="search" class="active pill-pane">
 			<%= render :partial => "requests/table", :locals => {:requests => @search} %>
 		</div>	
